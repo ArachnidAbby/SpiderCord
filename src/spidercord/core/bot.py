@@ -50,8 +50,8 @@ class Bot:
                     if data['op']!=11:
                         self.sequence = data['s']
                         if data['t'] == "MESSAGE_CREATE":
-                            member = await self._get(f"https://discord.com/api/v9/users/{data['d']['author']['id']}")
-                            print(member)
+                            member = data['d']['author']
+                            #print(member)
                             print(data['d']['content'])
                             if not "bot" in member.keys(): await self._post("https://discord.com/api/v9/channels/895854164217827381/messages", {"content":"RECIEVED"})
                         if data['t'] == "READY":
